@@ -2,124 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MindConnect Resources</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | MindConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f7f9fc;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
       color: #333;
+      padding: 20px;
     }
+
     header {
+      background-color: #ffffff;
+      padding: 20px 0;
       border-bottom: 1px solid #ddd;
-      margin-bottom: 30px;
-      text-align: center;
+      margin-bottom: 40px;
     }
+
     header h1 {
-      font-size: 2rem;
+      text-align: center;
+      font-size: 2.2rem;
       color: #4a90e2;
-      margin-bottom: 10px;
     }
-    nav ul {
-      list-style-type: none;
-      padding-left: 0;
+
+    nav {
       display: flex;
       justify-content: center;
-      gap: 25px;
       margin-top: 10px;
     }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
     nav ul li a {
       text-decoration: none;
       color: #333;
-      font-weight: 600;
+      font-weight: 500;
     }
-    nav ul li a.active,
-    nav ul li a:hover {
+
+    nav ul li a:hover,
+    nav ul li a.active {
       color: #4a90e2;
+      font-weight: 700;
     }
+
     main {
       max-width: 800px;
       margin: 0 auto;
+      padding: 0 20px;
     }
+
     h2, h3 {
       color: #4a90e2;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
+
     p {
       margin-bottom: 20px;
-      line-height: 1.5;
     }
+
     ul {
       margin-left: 20px;
-      margin-bottom: 20px;
     }
-    #fact-section {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    #fact-image {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      margin-bottom: 15px;
-      display: none;
-      margin-left: auto;   /* Add */
-      margin-right: auto;  /* Add */
-    }
-    
-    #fact-text {
-      font-style: italic;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto;
-      min-height: 48px;
-    }
-    #chart-section {
-      margin-bottom: 50px;
-    }
-    canvas {
-      max-width: 100%;
-      height: 300px;
-      border-radius: 8px;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+
     footer {
-      border-top: 1px solid #ddd;
+      margin-top: 60px;
       text-align: center;
       padding: 20px 0;
+      border-top: 1px solid #ddd;
       color: #777;
-      font-size: 0.9rem;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .hero {
+      background-color: #e6f0fc;
+      padding: 30px 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4a90e2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .cta-button:hover {
+      background-color: #357abd;
+    }
+
+    .quote-section {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-style: italic;
+      color: #555;
+    }
+
+    #quoteBlock {
+      margin-top: 10px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    #statistic-header {
+      font-style: normal;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #4a90e2;
+      text-align: center;
+    }
+
+    #statistic-image {
+      display: block;
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
     <h1>MindConnect</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <section id="fact-section">
-      <h3>Random Fact About Mental Health</h3>
-      <img id="fact-image" src="" alt="Mental health related fact image" />
-      <p id="fact-text">Loading interesting mental health facts...</p>
-    </section>
+    <section class="hero">
+      <h2>Supporting Student Mental Health</h2>
+      <p>MindConnect is your hub for connecting with campus counseling services, attending wellbeing events, and finding helpful resources.</p>
+      <a href="resources.html" class="cta-button">Explore Resources</a>
 
-    <section id="chart-section">
-      <h3>Mental Health Statistics</h3>
-      <canvas id="mentalHealthChart"></canvas>
+      <!-- Daily Quote Section -->
+      <section id="daily-quote" class="quote-section">
+        <h2>Daily Motivation</h2>
+        <p id="quoteBlock">Loading quote...</p>
+
+        <h3 id="statistic-header">Here’s a statistic on college and its impact on mental health:</h3>
+        <img 
+          id="statistic-image"
+          src="https://www.harmonyhit.com/wp-content/uploads/2024/07/College-and-Mental-Health-Graphic-3_Harmony-Healthcare-IT.png" 
+          alt="Statistic about college and mental health" 
+        />
+      </section>
     </section>
 
     <section class="overview">
@@ -133,94 +200,36 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 MindConnect Team | INST 377 Project</p>
   </footer>
 
-<script>
-  // Mental health facts array
-  const facts = [
-    {
-      text: "1 in 5 college students experiences a diagnosable mental health condition each year.",
-      image: "https://markinstyle.co.uk/wp-content/uploads/2021/10/Worrying-College.webp"
-    },
-    {
-      text: "Stress, anxiety, and depression are the top mental health challenges faced by students.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXCok9gQ00xm1198tqKsd9OwcPTl44FYRE5A&s"
-    },
-    {
-      text: "Regular physical activity can reduce symptoms of anxiety and depression.",
-      image: "https://saanichphysio.com/wp-content/uploads/2019/12/Exercise-and-Brain.png"
-    }
-  ];
+  <!-- Quote Fetch Script -->
+  <script>
+    const apiKey = "fZmCIKykW42pmYmbRR9rkg==E9Px6nAxmV3XgMt5";
+    const quoteBlock = document.getElementById('quoteBlock');
 
-  // Pick a random fact and display it
-  function showRandomFact() {
-    const factIndex = Math.floor(Math.random() * facts.length);
-    const fact = facts[factIndex];
-    const factTextEl = document.getElementById('fact-text');
-    const factImageEl = document.getElementById('fact-image');
-
-    factTextEl.textContent = fact.text;
-    if (fact.image) {
-      factImageEl.src = fact.image;
-      factImageEl.style.display = 'block';
-    } else {
-      factImageEl.style.display = 'none';
-    }
-  }
-
-  // Chart data and config
-  const ctx = document.getElementById('mentalHealthChart').getContext('2d');
-  const mentalHealthChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Anxiety', 'Depression', 'Stress', 'Sleep Issues', 'Suicidal Thoughts'],
-      datasets: [{
-        label: 'Percentage of Students Affected (%)',
-        data: [30, 25, 40, 20, 10],
-        backgroundColor: 'rgba(74, 144, 226, 0.7)',
-        borderColor: 'rgba(74, 144, 226, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 50,
-          ticks: {
-            stepSize: 10
-          },
-          title: {
-            display: true,
-            text: 'Percentage (%)'
-          }
-        },
-        x: {
-          title: {
-            display: true,
-            text: 'Mental Health Issues'
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          enabled: true
-        }
+    fetch('https://api.api-ninjas.com/v1/quotes', {
+      method: 'GET',
+      headers: { 'X-Api-Key': apiKey }
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then(data => {
+      if (data.length > 0) {
+        const quote = data[0];
+        quoteBlock.textContent = `"${quote.quote}" — ${quote.author}`;
+      } else {
+        quoteBlock.textContent = 'No quotes found.';
       }
-    }
-  });
-
-  // Run on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    showRandomFact();
-  });
-</script>
-
+    })
+    .catch(error => {
+      quoteBlock.textContent = 'Failed to load quote.';
+      console.error('Error fetching quote:', error);
+    });
+  </script>
 </body>
 </html>
