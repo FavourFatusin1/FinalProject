@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MindConnect Resources</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+    header {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #4a90e2;
+      margin-bottom: 10px;
+    }
+    nav ul {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #4a90e2;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2, h3 {
+      color: #4a90e2;
+      margin-bottom: 12px;
+    }
+    p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    #fact-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    #fact-image {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin-bottom: 15px;
+      display: none;
+    }
+    #fact-text {
+      font-style: italic;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 48px;
+    }
+    #chart-section {
+      margin-bottom: 50px;
+    }
+    canvas {
+      max-width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 20px 0;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MindConnect</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="fact-section">
+      <h3>Did you know?</h3>
+      <img id="fact-image" src="" alt="Mental health related fact image" />
+      <p id="fact-text">Loading interesting mental health facts...</p>
+    </section>
+
+    <section id="chart-section">
+      <h3>Mental Health Statistics</h3>
+      <canvas id="mentalHealthChart"></canvas>
+    </section>
+
+    <section class="overview">
+      <h3>Why MindConnect?</h3>
+      <p>We aim to simplify mental health support for college students by offering:</p>
+      <ul>
+        <li>One-click access to university counseling and wellness centers</li>
+        <li>Up-to-date events and support group listings</li>
+        <li>Community-building tools and self-care guides</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MindConnect Team | INST 377 Project</p>
+  </footer>
+
+<script>
+  // Mental health facts array
+  const facts = [
+    {
+      text: "1 in 5 college students experiences a diagnosable mental health condition each year.",
+      image: "https://example.com/fact1.jpg"
+    },
+    {
+      text: "Stress, anxiety, and depression are the top mental health challenges faced by students.",
+      image: "https://example.com/fact2.jpg"
+    },
+    {
+      text: "Regular physical activity can reduce symptoms of anxiety and depression.",
+      image: "https://example.com/fact3.jpg"
+    }
+  ];
+
+  // Pick a random fact and display it
+  function showRandomFact() {
+    const factIndex = Math.floor(Math.random() * facts.length);
+    const fact = facts[factIndex];
+    const factTextEl = document.getElementById('fact-text');
+    const factImageEl = document.getElementById('fact-image');
+
+    factTextEl.textContent = fact.text;
+    if (fact.image) {
+      factImageEl.src = fact.image;
+      factImageEl.style.display = 'block';
+    } else {
+      factImageEl.style.display = 'none';
+    }
+  }
+
+  // Chart data and config
+  const ctx = document.getElementById('mentalHealthChart').getContext('2d');
+  const mentalHealthChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Anxiety', 'Depression', 'Stress', 'Sleep Issues', 'Suicidal Thoughts'],
+      datasets: [{
+        label: 'Percentage of Students Affected (%)',
+        data: [30, 25, 40, 20, 10],
+        backgroundColor: 'rgba(74, 144, 226, 0.7)',
+        borderColor: 'rgba(74, 144, 226, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 50,
+          ticks: {
+            stepSize: 10
+          },
+          title: {
+            display: true,
+            text: 'Percentage (%)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Mental Health Issues'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          enabled: true
+        }
+      }
+    }
+  });
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    showRandomFact();
+  });
+</script>
+
+</body>
+</html>
