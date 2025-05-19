@@ -5,8 +5,7 @@ Description: The Student Time Management Application is a web-based tool that em
 
 Some sites I'd like to quote for API, are https://blog.opencounseling.com/how-to-choose-a-therapist/, and https://www.api-ninjas.com/api/quotes.
 
-**Developer Manual
-**
+**Developer Manual**
 Prerequisites
 Node.js (LTS)
 MongoDB or MongoDB Atlas
