@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MindConnect Resources</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- BotUI dependencies -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -66,10 +72,9 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       margin-bottom: 15px;
       display: none;
-      margin-left: auto;   /* Add */
-      margin-right: auto;  /* Add */
+      margin-left: auto;
+      margin-right: auto;
     }
-    
     #fact-text {
       font-style: italic;
       color: #555;
@@ -87,6 +92,14 @@
       background: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+    .botui-container {
+      margin-top: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
     footer {
       border-top: 1px solid #ddd;
       text-align: center;
@@ -96,8 +109,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <h1>MindConnect</h1>
     <nav>
@@ -131,10 +144,9 @@
       </p>
       <p>
         <strong>Why It’s Important for College Students to Have a Therapist</strong><br/>
-        College life brings many changes and challenges that can be stressful. Having a therapist provides a safe space for students to talk openly about their feelings and struggles. Therapy helps students manage stress and anxiety, build emotional resilience, improve mental health, navigate major life transitions, enhance academic performance, and develop healthier relationships. Access to the right therapist can support students in thriving both personally and academically.
+        College life brings many changes and challenges that can be stressful. Having a therapist provides a safe space for students to talk openly about their feelings and struggles...
       </p>
     </section>
-    
 
     <section class="overview">
       <h3>Why MindConnect?</h3>
@@ -150,100 +162,110 @@
         <li>Community-building tools and self-care guides</li>
       </ul>
     </section>
-    
+
+    <!-- BotUI chat interface -->
+    <section id="botui-app" class="botui-container">
+      <bot-ui></bot-ui>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 MindConnect Team | INST 377 Project</p>
   </footer>
 
-<script>
-  // Mental health facts array
-  const facts = [
-    {
-      text: "1 in 5 college students experiences a diagnosable mental health condition each year.",
-      image: "https://markinstyle.co.uk/wp-content/uploads/2021/10/Worrying-College.webp"
-    },
-    {
-      text: "Stress, anxiety, and depression are the top mental health challenges faced by students.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXCok9gQ00xm1198tqKsd9OwcPTl44FYRE5A&s"
-    },
-    {
-      text: "Regular physical activity can reduce symptoms of anxiety and depression.",
-      image: "https://saanichphysio.com/wp-content/uploads/2019/12/Exercise-and-Brain.png"
-    }
-  ];
-
-  // Pick a random fact and display it
-  function showRandomFact() {
-    const factIndex = Math.floor(Math.random() * facts.length);
-    const fact = facts[factIndex];
-    const factTextEl = document.getElementById('fact-text');
-    const factImageEl = document.getElementById('fact-image');
-
-    factTextEl.textContent = fact.text;
-    if (fact.image) {
-      factImageEl.src = fact.image;
-      factImageEl.style.display = 'block';
-    } else {
-      factImageEl.style.display = 'none';
-    }
-  }
-
-  // Chart data and config
-  const ctx = document.getElementById('mentalHealthChart').getContext('2d');
-  const mentalHealthChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Anxiety', 'Depression', 'Stress', 'Sleep Issues', 'Suicidal Thoughts'],
-      datasets: [{
-        label: 'Percentage of Students Affected (%)',
-        data: [30, 25, 40, 20, 10],
-        backgroundColor: 'rgba(74, 144, 226, 0.7)',
-        borderColor: 'rgba(74, 144, 226, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 50,
-          ticks: {
-            stepSize: 10
-          },
-          title: {
-            display: true,
-            text: 'Percentage (%)'
-          }
-        },
-        x: {
-          title: {
-            display: true,
-            text: 'Mental Health Issues'
-          }
-        }
+  <script>
+    // Mental health facts array
+    const facts = [
+      {
+        text: "1 in 5 college students experiences a diagnosable mental health condition each year.",
+        image: "https://markinstyle.co.uk/wp-content/uploads/2021/10/Worrying-College.webp"
       },
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          enabled: true
-        }
+      {
+        text: "Stress, anxiety, and depression are the top mental health challenges faced by students.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXCok9gQ00xm1198tqKsd9OwcPTl44FYRE5A&s"
+      },
+      {
+        text: "Regular physical activity can reduce symptoms of anxiety and depression.",
+        image: "https://saanichphysio.com/wp-content/uploads/2019/12/Exercise-and-Brain.png"
+      }
+    ];
+
+    function showRandomFact() {
+      const factIndex = Math.floor(Math.random() * facts.length);
+      const fact = facts[factIndex];
+      const factTextEl = document.getElementById('fact-text');
+      const factImageEl = document.getElementById('fact-image');
+
+      factTextEl.textContent = fact.text;
+      if (fact.image) {
+        factImageEl.src = fact.image;
+        factImageEl.style.display = 'block';
+      } else {
+        factImageEl.style.display = 'none';
       }
     }
-  });
 
-  
-  
+    // Chart setup
+    const ctx = document.getElementById('mentalHealthChart').getContext('2d');
+    const mentalHealthChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Anxiety', 'Depression', 'Stress', 'Sleep Issues', 'Suicidal Thoughts'],
+        datasets: [{
+          label: 'Percentage of Students Affected (%)',
+          data: [30, 25, 40, 20, 10],
+          backgroundColor: 'rgba(74, 144, 226, 0.7)',
+          borderColor: 'rgba(74, 144, 226, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 50,
+            ticks: { stepSize: 10 },
+            title: { display: true, text: 'Percentage (%)' }
+          },
+          x: {
+            title: { display: true, text: 'Mental Health Issues' }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: true }
+        }
+      }
+    });
 
-  // Run on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    showRandomFact();
-  });
-</script>
+    // BotUI script
+    document.addEventListener('DOMContentLoaded', () => {
+      showRandomFact();
 
+      const botui = new BotUI('botui-app');
+
+      botui.message.add({ content: 'Hi there! 👋 I\'m your MindConnect Assistant.' }).then(() => {
+        return botui.message.add({ content: 'How can I help you today?' });
+      }).then(() => {
+        return botui.action.button({
+          addMessage: true,
+          action: [
+            { text: 'Find campus resources', value: 'resources' },
+            { text: 'Get self-care tips', value: 'selfcare' },
+            { text: 'Talk to someone', value: 'talk' }
+          ]
+        });
+      }).then(res => {
+        if (res.value === 'resources') {
+          botui.message.add({ content: 'You can check out the counseling services at your university [here](https://health.umd.edu/wellness-advocacy).' });
+        } else if (res.value === 'selfcare') {
+          botui.message.add({ content: 'Great! Start with 10 minutes of deep breathing, stretching, or journaling. Taking this short time for yourself can help clear your mind and prepare you for the day ahead. Focus on your breath, release any tension in your body, and allow your thoughts to flow freely without judgment. These mindful moments can set a calm, intentional tone for everything you do today.' });
+        } else if (res.value === 'talk') {
+          botui.message.add({ content: 'Talking helps. Reach out to a counselor, friend, or call 988 for immediate mental health support. Some good resources for counseling and therapy are listed above. You can also explore additional options like the Crisis Text Line by texting HOME to 741741, or visit platforms such as BetterHelp ([www.betterhelp.com](http://www.betterhelp.com)) and Talkspace ([www.talkspace.com](http://www.talkspace.com)) for online therapy. Organizations like NAMI (National Alliance on Mental Illness) – 1-800-950-NAMI (6264) and ULifeline ([www.ulifeline.org](http://www.ulifeline.org)) also provide helpful tools, support groups, and campus-specific mental health information.' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
