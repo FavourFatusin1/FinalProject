@@ -1,5 +1,6 @@
 # FinalProject
 **THIS IS THE CORRECT VERCEL LINK**: https://mind-connect-git-main-favourfatusin1s-projects.vercel.app/
+
 **Webiste Name:** MindConnect
 
 Description: The Student Time Management Application is a web-based tool that empowers students to take control of their time. Tailored for both high school and college students, this app enables users to plan, organize, and visualize their weekly and monthly schedules through a clean interface that integrates calendar functionalities. With features like time blocking, deadline reminders, and customizable views, students can reduce stress, stay on top of responsibilities, and boost academic performance. 
