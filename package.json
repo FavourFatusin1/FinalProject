@@ -1,19 +1,12 @@
+
 {
-  "name": "mindconnect",
+  "name": "supabasesampleapp",
   "version": "1.0.0",
-  "description": "MindConnect backend for mental health support site",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "MindConnect Team",
+  "author": "Favour Fatusin",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.4",
-    "node-fetch": "^2.6.7"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  }
+  "description": ""
 }
